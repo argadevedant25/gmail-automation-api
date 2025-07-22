@@ -24,8 +24,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 
 */
-$config['base_url'] = 'https://localhost/Gmail_Automation_API/';
-$config['API_KEY'] = '8858bc41fc4690641ec25c4b0ce43e81'; // Your generated key
+//$config['base_url'] = 'https://localhost/Gmail_Automation_API/ticketcontroller/create';
+$config['base_url'] = '';
+$config['API_KEY'] = 'ed1087280daea66b576e155c17795609'; // Your generated key
 /*
 |--------------------------------------------------------------------------
 | Index File
@@ -226,7 +227,7 @@ $config['allow_get_array'] = TRUE;
 | your log files will fill up very fast.
 |
 */
-$config['log_threshold'] = 0;
+$config['log_threshold'] = 4;
 
 /*
 |--------------------------------------------------------------------------
