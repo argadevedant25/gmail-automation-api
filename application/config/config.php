@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 
 */
-$config['base_url'] = 'https://gmailautomationapi.infinityfreeapp.com/';
+$config['base_url'] = 'https://localhost/Gmail_Automation_API/';
 $config['API_KEY'] = '8858bc41fc4690641ec25c4b0ce43e81'; // Your generated key
 /*
 |--------------------------------------------------------------------------
