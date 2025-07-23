@@ -79,9 +79,8 @@ $db['default'] = array(
     'username' => getenv('DB_USER') ?: 'neondb_owner',
     'password' => getenv('DB_PASS') ?: 'npg_U6g5sCwXIPoZ',
     'database' => getenv('DB_NAME') ?: 'ticket_system',
-	'dbdriver' => 'pgsql',
+	'dbdriver' => 'postgre',
 	'port' 	=> '5432',
-	'dbdriver' => 'pgsql',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'), // Set to TRUE for debugging
