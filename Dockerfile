@@ -4,7 +4,7 @@ RUN apt-get update && apt-get install -y \
     libzip-dev \
     libpq-dev \
     unzip
-RUN docker-php-ext-install pdo_mysql mbstring zip pdo_pgsql
+RUN docker-php-ext-install pdo_mysql mbstring zip pdo_pgsql pgsql
 RUN a2enmod rewrite
 COPY . /var/www/html/
 RUN chown -R www-data:www-data /var/www/html
