@@ -51,7 +51,7 @@ class TicketController extends CI_Controller {
         ];
 
         // Save to Neon PostgreSQL
-        $this->db->insert('tickets', $ticket_data);
+        $this->db->insert('ticket_system', $ticket_data);
         if ($this->db->affected_rows() > 0) {
             log_message('debug', 'Ticket saved to database: ' . print_r($ticket_data, true));
         } else {
