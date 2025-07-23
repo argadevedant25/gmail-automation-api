@@ -75,7 +75,7 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => getenv('DB_HOST') ?: 'postgresql', // e.g., ep-cool-123.us-east-2.aws.neon.tech
+	'hostname' => getenv('DB_HOST') ?: 'ep-dry-hill-a12opvrh-pooler.ap-southeast-1.aws.neon.tech', // e.g., ep-cool-123.us-east-2.aws.neon.tech
     'username' => getenv('DB_USER') ?: 'neondb_owner',
     'password' => getenv('DB_PASS') ?: 'npg_U6g5sCwXIPoZ',
     'database' => getenv('DB_NAME') ?: 'ticket_system',
