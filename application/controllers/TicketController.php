@@ -34,7 +34,7 @@ class TicketController extends CI_Controller {
 
         $auth_header = $this->input->get_request_header('Authorization');
         log_message('debug', 'Authorization header: ' . ($auth_header ?: 'None'));
-        $expected_token = '8858bc41fc4690641ec25c4b0ce43e81';
+        $expected_token = 'ed1087280daea66b576e155c17795609';
         if ($auth_header !== "Bearer $expected_token") {
             log_message('error', 'Unauthorized: Invalid token. Received: ' . ($auth_header ?: 'None'));
             http_response_code(401);
