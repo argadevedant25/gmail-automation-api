@@ -74,13 +74,14 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'	=> '',
+	'dsn'	=> 'options=--endpoint=ep-dry-hill-a12opvrh-pooler',
 	'hostname' => getenv('DB_HOST') ?: 'ep-dry-hill-a12opvrh-pooler.ap-southeast-1.aws.neon.tech', // e.g., ep-cool-123.us-east-2.aws.neon.tech
     'username' => getenv('DB_USER') ?: 'neondb_owner',
     'password' => getenv('DB_PASS') ?: 'npg_U6g5sCwXIPoZ',
     'database' => getenv('DB_NAME') ?: 'ticket_system',
 	'dbdriver' => 'postgre',
 	'port' 	=> '5432',
+	'sslmode' => 'require',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'), // Set to TRUE for debugging
