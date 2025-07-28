@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 */
 //$config['base_url'] = 'https://localhost/Gmail_Automation_API/ticketcontroller/create';
-$config['base_url'] = '';
+$config['base_url'] = 'https://gmail-automation-api.onrender.com';
 $config['API_KEY'] = 'ed1087280daea66b576e155c17795609'; // Your generated key
 /*
 |--------------------------------------------------------------------------
