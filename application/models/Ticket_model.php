@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class TicketModel extends CI_Model {
+class Ticket_model extends CI_Model {
     
     public function __construct() {
         parent::__construct();
@@ -13,7 +13,7 @@ class TicketModel extends CI_Model {
             return $this->db->insert('tickets', $data);
         } catch (Exception $e) {
             log_message('error', 'Failed to insert ticket: ' . $e->getMessage());
-            return false;
+            throw $e; // Re-throw to be caught in controller
         }
     }
 }
