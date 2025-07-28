@@ -18,7 +18,7 @@ $db['default'] = array(
     'char_set' => 'utf8',
     'dbcollat' => 'utf8_general_ci',
     'swap_pre' => '',
-    'encrypt' => array('sslmode' => 'require', 'channel_binding' => 'require'), // Neon-specific SSL settings
+    'encrypt' => array('sslmode' => 'require'), // Neon-specific SSL settings
     'compress' => FALSE,
     'stricton' => FALSE,
     'failover' => array(),
@@ -27,7 +27,7 @@ $db['default'] = array(
 );
 
 // Parse DATABASE_URL environment variable for Neon connection
-$database_url = getenv('DATABASE_URL') ?: 'postgresql://neondb_owner:npg_U6g5sCwXIPoZ@ep-dry-hill-a12opvrh-pooler.ap-southeast-1.aws.neon.tech/ticket_system?sslmode=require&channel_binding=require';
+$database_url = getenv('DATABASE_URL') ?: 'postgresql://neondb_owner:npg_U6g5sCwXIPoZ@ep-dry-hill-a12opvrh-pooler.ap-southeast-1.aws.neon.tech/ticket_system?sslmode=require&options=endpoint%3Dep-dry-hill-a12opvrh';
 if ($database_url) {
     $url = parse_url($database_url);
     $db['default']['hostname'] = $url['host'];
