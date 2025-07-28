@@ -56,24 +56,35 @@ class TicketController extends CI_Controller {
             'created_at' => date('Y-m-d H:i:s')
         ];
 
-        // Save to database
-        try {
-            if ($this->Ticket_model->create_ticket($ticket_data)) {
-                $this->output
-                    ->set_content_type('application/json')
-                    ->set_status_header(201)
-                    ->set_output(json_encode(['status' => 'success', 'message' => 'Ticket created successfully', 'ticket_id' => $data['ticket_id']]));
-            } else {
-                $this->output
-                    ->set_content_type('application/json')
-                    ->set_status_header(500)
-                    ->set_output(json_encode(['status' => 'error', 'message' => 'Failed to save ticket']));
-            }
-        } catch (Exception $e) {
-            $this->output
-                ->set_content_type('application/json')
-                ->set_status_header(500)
-                ->set_output(json_encode(['status' => 'error', 'message' => 'Database error: ' . $e->getMessage()]));
+        // Save to Neon PostgreSQL
+        $this->db->insert('tickets', $ticket_data);
+        if ($this->db->affected_rows() > 0) {
+            log_message('debug', 'Ticket saved to database: ' . print_r($ticket_data, true));
+        } else {
+            log_message('error', 'Failed to save ticket to database');
+            http_response_code(500);
+            echo json_encode(['error' => 'Failed to save ticket']);
+            return;
         }
+
+        log_message('debug', 'Ticket created: ' . print_r($ticket_data, true));
+        http_response_code(200);
+        echo json_encode([
+            'status' => 'success',
+            'message' => 'Ticket created successfully',
+            'ticket_id' => $data['ticket_id']
+        ]);
     }
 }
+
+        // Example: Save to database (uncomment if using a model)
+        // $this->load->model('Ticket_model');
+        // $this->Ticket_model->create_ticket($ticket_data);
+
+        // log_message('debug', 'Ticket created: ' . print_r($ticket_data, true));
+        // http_response_code(200);
+        // echo json_encode([
+        //     'status' => 'success',
+        //     'message' => 'Ticket created successfully',
+        //     'ticket_id' => $data['ticket_id']
+        // ]);
