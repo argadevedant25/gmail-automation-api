@@ -5,35 +5,27 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-    'dsn' => '',
-    'hostname' => '', // Will be set dynamically from DATABASE_URL
-    'username' => '', // Will be set dynamically from DATABASE_URL
-    'password' => '', // Will be set dynamically from DATABASE_URL
-    'database' => '', // Will be set dynamically from DATABASE_URL
+    'dsn' => getenv('DATABASE_URL') ?: 'pgsql:host=ep-noisy-bonus-a1n85050.ap-southeast-1.aws.neon.tech;port=5432;dbname=ticket_system;user=neondb_owner;password=npg_U6g5sCwXIPoZ;sslmode=require;options=endpoint=ep-noisy-bonus-a1n85050',
+    'hostname' => 'ep-noisy-bonus-a1n85050.ap-southeast-1.aws.neon.tech',
+    'username' => 'neondb_owner',
+    'password' => 'npg_U6g5sCwXIPoZ',
+    'database' => 'ticket_system',
     'dbdriver' => 'postgre',
     'pconnect' => FALSE,
-    'db_debug' => (ENVIRONMENT !== 'production'), // Disable in production to prevent error output
+    'db_debug' => FALSE, // Disable to prevent header errors
     'cache_on' => FALSE,
     'cachedir' => '',
     'char_set' => 'utf8',
     'dbcollat' => 'utf8_general_ci',
     'swap_pre' => '',
-    'encrypt' => TRUE, // Enable SSL for Neon
+    'encrypt' => array('sslmode' => 'require', 'options' => 'endpoint=ep-noisy-bonus-a1n85050'),
     'compress' => FALSE,
     'stricton' => FALSE,
     'failover' => array(),
-    'save_queries' => TRUE
+    'save_queries' => TRUE,
+    'port' => 5432 // Explicit port
 );
 
-// Parse DATABASE_URL environment variable for Neon connection
-$database_url = getenv('DATABASE_URL') ?: 'postgresql://neondb_owner:npg_U6g5sCwXIPoZ@ep-noisy-bonus-a1n85050.ap-southeast-1.aws.neon.tech/ticket_system?sslmode=require&options=endpoint%3Dep-noisy-bonus-a1n85050';
-if ($database_url) {
-    $url = parse_url($database_url);
-    $db['default']['hostname'] = $url['host'];
-    $db['default']['username'] = $url['user'];
-    $db['default']['password'] = $url['pass'];
-    $db['default']['database'] = ltrim($url['path'], '/');
-    $db['default']['port'] = $url['port'] ?? 5432; // Default PostgreSQL port
-    $db['default']['sslmode'] = 'require'; // Enforce SSL for Neon
-}
+// Debug log for DATABASE_URL
+log_message('debug', 'DATABASE_URL: ' . getenv('DATABASE_URL'));
 ?>
