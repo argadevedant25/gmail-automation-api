@@ -6,10 +6,11 @@ RUN apt-get update && apt-get install -y \
     lsb-release \
     wget \
     && wget --quiet -O /usr/share/keyrings/postgresql-archive-keyring.gpg https://www.postgresql.org/media/keys/ACCC4CF8.asc \
-    && echo "deb [signed-by=/usr/share/keyrings/postgresql-archive-keyring.gpg] http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list
+    && echo "deb [signed-by=/usr/share/keyrings/postgresql-archive-keyring.gpg] http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list \
+    && apt-get update
 
 # Install dependencies and PHP extensions
-RUN apt-get update && apt-get install -y \
+RUN apt-get install -y \
     libonig-dev \
     libzip-dev \
     libpq-dev \
