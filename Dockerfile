@@ -5,7 +5,7 @@ RUN apt-get update && apt-get install -y \
     gnupg \
     lsb-release \
     wget \
-    && wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc > /usr/share/keyrings/postgresql-archive-keyring.gpg \
+    && wget --quiet -O /usr/share/keyrings/postgresql-archive-keyring.gpg https://www.postgresql.org/media/keys/ACCC4CF8.asc \
     && echo "deb [signed-by=/usr/share/keyrings/postgresql-archive-keyring.gpg] http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list
 
 # Install dependencies and PHP extensions
@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y \
     libonig-dev \
     libzip-dev \
     libpq-dev \
-    postgresql-client-16 \
+    postgresql-client-15 \
     unzip \
     && docker-php-ext-install pdo_mysql mbstring zip pdo_pgsql pgsql
 
