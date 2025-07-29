@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: your-render-service
+    env: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: DATABASE_URL
+        value: postgresql://neondb_owner:npg_U6g5sCwXIPoZ@ep-dry-hill-a12opvrh-pooler.ap-southeast-1.aws.neon.tech/ticket_system?sslmode=require&options=endpoint%3Dep-dry-hill-a12opvrh

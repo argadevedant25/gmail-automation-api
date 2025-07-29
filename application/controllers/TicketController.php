@@ -1,9 +1,11 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class TicketController extends CI_Controller {
-    
-    public function __construct() {
+class TicketController extends CI_Controller
+{
+
+    public function __construct()
+    {
         parent::__construct();
         $this->load->model('Ticket_model');
         $this->load->helper('url');
@@ -13,7 +15,8 @@ class TicketController extends CI_Controller {
         header('Access-Control-Allow-Headers: Content-Type, Authorization');
     }
 
-    public function create() {
+    public function create()
+    {
         // Check if request is POST
         if ($this->input->method() !== 'post') {
             $this->output
@@ -74,6 +77,12 @@ class TicketController extends CI_Controller {
             'message' => 'Ticket created successfully',
             'ticket_id' => $data['ticket_id']
         ]);
+    }
+    public function debug()
+    {
+        $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode(['pgsql_version' => pg_version()]));
     }
 }
 
