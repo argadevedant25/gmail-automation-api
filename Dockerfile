@@ -1,12 +1,14 @@
 FROM php:7.4-apache
 
-# Update package index and install dependencies
-RUN apt-get update && apt-get install -y \
-    libonig-dev \
-    libzip-dev \
-    libpq-dev \
-    postgresql-15\
-    unzip \
+# Clean and update package lists thoroughly
+RUN rm -rf /var/lib/apt/lists/* && \
+    apt-get clean && \
+    apt-get update -y && \
+    apt-get install -y \
+        libonig-dev \
+        libzip-dev \
+        libpq-dev \
+        unzip \
     && rm -rf /var/lib/apt/lists/* \
     && docker-php-ext-install pdo_mysql mbstring zip pdo_pgsql pgsql
 
@@ -17,9 +19,6 @@ RUN a2enmod rewrite
 COPY . /var/www/html/
 RUN chown -R www-data:www-data /var/www/html
 
-# Expose port (Render uses a dynamic port)
 EXPOSE 80
-
-# Start Apache
 CMD ["apache2-foreground"]
 
