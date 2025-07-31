@@ -1,11 +1,13 @@
 FROM php:7.4-apache
 
-
-RUN apt-get install -y \
+# Update package index and install dependencies
+RUN apt-get update && apt-get install -y \
     libonig-dev \
     libzip-dev \
     libpq-dev \
+    postgresql-15\
     unzip \
+    && rm -rf /var/lib/apt/lists/* \
     && docker-php-ext-install pdo_mysql mbstring zip pdo_pgsql pgsql
 
 # Enable Apache rewrite module
@@ -20,3 +22,4 @@ EXPOSE 80
 
 # Start Apache
 CMD ["apache2-foreground"]
+
