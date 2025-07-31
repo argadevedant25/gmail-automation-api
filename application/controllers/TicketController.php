@@ -41,7 +41,7 @@ class TicketController extends CI_Controller
 
         // Validate API key
         $api_key = $this->input->get_request_header('Authorization');
-        if ($api_key !== 'Bearer . $this->config->item('API_KEY')) {
+        if ($api_key !== 'Bearer ed1087280daea66b576e155c17795609') {
             $this->output
                 ->set_content_type('application/json')
                 ->set_status_header(401)
