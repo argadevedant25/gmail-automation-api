@@ -1,10 +1,10 @@
 FROM php:7.4-apache
-# Install dependencies and PHP extensions
+
+
 RUN apt-get install -y \
     libonig-dev \
     libzip-dev \
     libpq-dev \
-    postgresql-client-14 \
     unzip \
     && docker-php-ext-install pdo_mysql mbstring zip pdo_pgsql pgsql
 

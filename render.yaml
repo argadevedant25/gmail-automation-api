@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: your-render-service
+    name: gmail-automation-api
     env: docker
     plan: free
     dockerfilePath: ./Dockerfile
