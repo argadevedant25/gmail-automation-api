@@ -1,5 +1,5 @@
-FROM php:7.4-apache
 
+<<<<<<< HEAD
 # Install PostgreSQL apt repository for newer libpq
 RUN apt-get update && apt-get install -y \
     gnupg \
@@ -30,3 +30,5 @@ EXPOSE 80
 
 # Start Apache
 CMD ["apache2-foreground"]
+=======
+>>>>>>> 71bb096bc3eff5aff1eb03097951027d3bc91369
